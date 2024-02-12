@@ -6,55 +6,54 @@
 int main()
 {
 
-    //set up some variables
+    // set up some variables
     bool user_wants_to_play_again = true;
     std::string user_input;
 
- 
-    while(user_wants_to_play_again)//while user wants to play again
+    while (user_wants_to_play_again)
     {
-        //pick word randomly
-        Word word {};
+        // pick word randomly
+        Word word{};
 
-        //print initali empty word
+        // print initial empty word
         word.print();
 
-        while(!word.is_guessed() && word.guesses_left() > 0)//while word had not been guessed or all guesses have not been used
+        while (!word.is_guessed() && word.guesses_left() > 0)
         {
-            //ask for a guess
-            //std::cout << "Make a guess! Five letter word: ";
+            // ask for a guess
+            // std::cout << "Make a guess! Five letter word: ";
             std::cin >> user_input;
-            while(user_input.size() != 5)
+            while (user_input.size() != 5)
             {
-                //std::cout << "Word has to be of lenght 5! Make a guess! Five letter word: ";
-                std::cin >> user_input;   
+                // std::cout << "Word has to be of lenght 5! Make a guess! Five letter word: ";
+                std::cin >> user_input;
             }
             word.guess(user_input);
-            //print word
+            // print word
             word.print();
         }
-        if(word.is_guessed())//if word was guessed 
+        if (word.is_guessed())
         {
-            //complement user
+            // complement user
             std::cout << "Congrats! You have guessed the word correctly!\n";
-            //ask to play again
+            // ask to play again
             std::cout << "Would you like to play again? Enter (yes) or (no): ";
             std::cin >> user_input;
-            if(user_input != "Yes" && user_input != "yes" && user_input != "y" && user_input != "Y")
+            if (user_input != "Yes" && user_input != "yes" && user_input != "y" && user_input != "Y")
             {
                 user_wants_to_play_again = false;
             }
-
         }
-        else if(word.guesses_left() <= 0)//if guesses ran out //strong condition
+        else if (word.guesses_left() <= 0) // if guesses ran out //strong condition
         {
-            //apologize for the user losing 
+            // apologize for the user losing
             std::cout << "Sorry, you have lost the game. You ran out of guesses.\n";
+            std::cout << "The word was: " << word.get_word() << std::endl;
 
-            //ask to play agian
+            // ask to play agian
             std::cout << "Would you like to play again? Enter (yes) or (no): ";
             std::cin >> user_input;
-            if(user_input != "Yes" && user_input != "yes" && user_input != "y" && user_input != "Y")
+            if (user_input != "Yes" && user_input != "yes" && user_input != "y" && user_input != "Y")
             {
                 user_wants_to_play_again = false;
             }
@@ -63,10 +62,7 @@ int main()
         {
             throw "Oh oh";
         }
-
     }
-
 
     return 0;
 }
-

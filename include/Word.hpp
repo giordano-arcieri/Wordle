@@ -24,6 +24,7 @@ public:
     void print();
     bool is_guessed() const;
     bool guess(const std::string& guess);
+    std::string get_word() const;
 };
 
 #endif
